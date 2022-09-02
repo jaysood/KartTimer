@@ -1,16 +1,14 @@
 from PIL import ImageGrab
 import time
 
-enough = False
-count = 0
-starttime = time.time()
-
-while enough == False:
-    screenshot = ImageGrab.grab(bbox=(0, 0, 7000, 7000))
-    screenshot.save(str(count) + "temp.png")
+while True:
+    start_time = time.time()
+    screenshot = ImageGrab.grab(bbox=(0, 0, 3000, 2100))
+    screenshot = screenshot.convert("RGB")
+    screenshot.save("latest.jpg", "jpeg")
     print("Screenshot taken")
-    count += 1
-    if count == 10:
-        enough = True
-        sleep(1)
+    end_time = time.time()
+    time_between_shots = end_time - start_time
+    print("Time between screenshots: " + str(time_between_shots))
+    time.sleep(1)
 
